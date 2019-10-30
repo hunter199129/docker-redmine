@@ -83,8 +83,7 @@ RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#i
 
 ## Plugins
 COPY plugins.zip .
-RUN mkdir plugins \
-&& unzip plugins.zip -d /home/redmine/data/plugins \
+RUN unzip plugins.zip -d /home/redmine/data/plugins \
 && rm plugins.zip
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]

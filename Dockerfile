@@ -15,7 +15,7 @@ FROM ubuntu:xenial-20190222
 
 LABEL maintainer="sameer@damagehead.com"
 
-ENV RUBY_VERSION=2.4 \
+ENV RUBY_VERSION=2.5 \
     REDMINE_VERSION=4.0.5 \
     REDMINE_USER="redmine" \
     REDMINE_HOME="/home/redmine" \
@@ -84,7 +84,7 @@ RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#i
 ## Plugins
 COPY plugins.zip .
 RUN mkdir plugins \
-&& unzip plugins.zip -d plugins \
+&& unzip plugins.zip -d /home/redmine/data/plugins \
 && rm plugins.zip
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]

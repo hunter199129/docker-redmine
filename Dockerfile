@@ -50,11 +50,12 @@ RUN apt-get update \
 
 ## Install libreoffice
 RUN apt update \
-&& apt -y install wget unzip libmysqlclient-dev libpq-dev libmagick++-dev \
+&& apt -y install libmysqlclient-dev libpq-dev libmagick++-dev \
 && apt -y install software-properties-common \
 && add-apt-repository ppa:libreoffice/ppa \
 && apt update  | grep packages \
-&& apt -y install libreoffice --no-install-recommends
+&& apt -y install libreoffice --no-install-recommends \
+&& apt -y install unzip
 
 COPY assets/build/ ${REDMINE_BUILD_ASSETS_DIR}/
 
@@ -79,6 +80,12 @@ RUN sed -e "s/general_csv_encoding: ISO-8859-1/general_csv_encoding: gb18030/" -
 RUN sed -e "s/general_csv_encoding: Big5/general_csv_encoding: gb18030/" -i config/locales/zh-TW.yml
 ## Set index
 RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#index', :as => 'home'/" -i config/routes.rb
+
+## Plugins
+COPY plugins.zip .
+RUN mkdir plugins \
+&& unzip plugins.zip -d plugins \
+&& rm plugins.zip
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 

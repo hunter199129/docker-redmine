@@ -75,10 +75,10 @@ WORKDIR ${REDMINE_INSTALL_DIR}
 
 ## Customize 
 ## Set encoding for csv output issue
-RUN sed -e "s/general_csv_encoding: ISO-8859-1/general_csv_encoding: gb18030/" -i /home/redmine/redmine/config/locales/en.yml
-RUN sed -e "s/general_csv_encoding: Big5/general_csv_encoding: gb18030/" -i /home/redmine/redmine/config/locales/zh-TW.yml
+RUN sed -e "s/general_csv_encoding: ISO-8859-1/general_csv_encoding: gb18030/" -i config/locales/en.yml
+RUN sed -e "s/general_csv_encoding: Big5/general_csv_encoding: gb18030/" -i config/locales/zh-TW.yml
 ## Set index
-RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#index', :as => 'home'/" -i /home/redmine/redmine/config/routes.rb
+RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#index', :as => 'home'/" -i config/routes.rb
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 

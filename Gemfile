@@ -10,5 +10,4 @@ gem 'coveralls', :require => false
 
 gem 'redmine_crm'
 
-gem 'devise'
-gem 'erubis'
+gem 'ruby-filemagic'

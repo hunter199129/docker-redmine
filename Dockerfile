@@ -42,7 +42,24 @@ RUN apt-get update \
       libxslt1.1 libffi6 zlib1g gsfonts vim-tiny \
  && update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX \
  && gem install --no-document bundler \
+ ## Install gems for plugins
+ && bundle install \
  && rm -rf /var/lib/apt/lists/*
+
+## Install libreoffice
+RUN apt update \
+&& apt -y install wget unzip libmysqlclient-dev libpq-dev libmagick++-dev \
+&& apt -y install software-properties-common \
+&& add-apt-repository ppa:libreoffice/ppa \
+&& apt update  | grep packages \
+&& apt -y install libreoffice --no-install-recommends
+
+## Customize 
+## Set encoding for csv output issue
+RUN sed -e "s/general_csv_encoding: ISO-8859-1/general_csv_encoding: gb18030/" -i /home/redmine/redmine/config/locales/en.yml
+RUN sed -e "s/general_csv_encoding: Big5/general_csv_encoding: gb18030/" -i /home/redmine/redmine/config/locales/zh-TW.yml
+## Set index
+RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#index', :as => 'home'/" -i /home/redmine/redmine/config/routes.rb
 
 COPY assets/build/ ${REDMINE_BUILD_ASSETS_DIR}/
 

@@ -40,7 +40,7 @@ RUN apt-get update \
       imagemagick subversion git cvs bzr mercurial darcs rsync ruby${RUBY_VERSION} locales openssh-client \
       gcc g++ make patch pkg-config gettext-base ruby${RUBY_VERSION}-dev libc6-dev zlib1g-dev libxml2-dev \
       libmysqlclient20 libpq5 libyaml-0-2 libcurl3 libssl1.0.0 uuid-dev xz-utils \
-      libxslt1.1 libffi6 zlib1g gsfonts vim-tiny \
+      libxslt1.1 libffi6 zlib1g gsfonts vim-tiny libmagic-dev \
  && update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX \
  && gem install --no-document bundler \
  ## Install gems for plugins
@@ -50,7 +50,7 @@ RUN apt-get update \
 
 ## Install libreoffice
 RUN apt update \
-&& apt -y install libmysqlclient-dev libpq-dev libmagick++-dev libmagic-dev \
+&& apt -y install libmysqlclient-dev libpq-dev libmagick++-dev \
 && apt -y install software-properties-common \
 && add-apt-repository ppa:libreoffice/ppa \
 && apt update  | grep packages \

@@ -9,3 +9,6 @@ gem 'rails-controller-testing'
 gem 'coveralls', :require => false
 
 gem 'redmine_crm'
+
+gem 'devise'
+gem 'erubis'

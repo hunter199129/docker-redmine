@@ -50,7 +50,7 @@ RUN apt-get update \
 
 ## Install libreoffice
 RUN apt update \
-&& apt -y install libmysqlclient-dev libpq-dev libmagick++-dev \
+&& apt -y install libmysqlclient-dev libpq-dev libmagick++-dev libmagic-dev \
 && apt -y install software-properties-common \
 && add-apt-repository ppa:libreoffice/ppa \
 && apt update  | grep packages \

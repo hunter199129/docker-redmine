@@ -61,6 +61,22 @@ sed -i \
   echo '# unicorn 5.5.0 has a bug in unicorn_rails. See issue #392';
   echo 'gem "unicorn", "~> 5.4", "!=5.5.0"';
   echo 'gem "dalli", "~> 2.7.0"';
+  
+  ## ---------------------
+  ## Add gems for plugins
+  ## ---------------------
+  echo 'gem "simplecov-rcov"';
+  echo 'gem "factory_girl_rails"';
+  echo 'gem "shoulda"';
+
+  echo 'gem "factory_bot_rails"';
+  echo 'gem "rails-controller-testing"';
+  echo 'gem "coveralls", :require => false';
+
+  echo 'gem "redmine_crm"';
+
+  echo 'gem "ruby-filemagic"';
+  
 ) >> ${REDMINE_INSTALL_DIR}/Gemfile
 
 ## some gems complain about missing database.yml, shut them up!

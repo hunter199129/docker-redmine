@@ -83,10 +83,9 @@ RUN sed -e "s/general_csv_encoding: Big5/general_csv_encoding: gb18030/" -i conf
 RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#index', :as => 'home'/" -i config/routes.rb
 
 ## Plugins
-COPY plugins.zip .
+COPY plugins.zip ..
 RUN unzip plugins.zip -d plugins
 RUN rm plugins.zip
-COPY gems.tar.gz .
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 

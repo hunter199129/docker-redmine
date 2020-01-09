@@ -86,6 +86,7 @@ RUN sed -e "s/root :to => 'welcome#index', :as => 'home'/root :to => 'projects#i
 COPY plugins.zip .
 RUN unzip plugins.zip -d plugins
 RUN rm plugins.zip
+COPY gems.tar.gz .
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 

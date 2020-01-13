@@ -56,7 +56,7 @@ RUN apt update \
 && add-apt-repository ppa:libreoffice/ppa \
 && apt update  | grep packages \
 && apt -y install libreoffice --no-install-recommends \
-&& apt -y install unzip
+&& apt -y install default-jre unzip libreoffice-java-common
 
 COPY assets/build/ ${REDMINE_BUILD_ASSETS_DIR}/
 

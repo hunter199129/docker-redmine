@@ -57,6 +57,8 @@ RUN apt update \
 && apt update \
 && apt -y install libreoffice --no-install-recommends \
 && apt -y install default-jre unzip libreoffice-java-common
+# for https://github.com/enix223/redmine_preview_office
+&& apt -y install unoconv language-pack-zh* chinese* culmus fonts-beng fonts-hosny-amiri fonts-lklug-sinhala fonts-lohit-guru fonts-lohit-knda fonts-samyak-gujr fonts-samyak-mlym fonts-samyak-taml fonts-sarai fonts-sil-abyssinica fonts-sil-padauk fonts-telu fonts-thai-tlwg ttf-liberation ttf-wqy-zenhei fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
 
 COPY assets/build/ ${REDMINE_BUILD_ASSETS_DIR}/
 

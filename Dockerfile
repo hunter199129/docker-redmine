@@ -54,7 +54,7 @@ RUN apt update \
 && apt -y install libmysqlclient-dev libpq-dev libmagick++-dev \
 && apt -y install software-properties-common \
 && add-apt-repository ppa:libreoffice/ppa \
-&& apt update  | grep packages \
+&& apt update \
 && apt -y install libreoffice --no-install-recommends \
 && apt -y install default-jre unzip libreoffice-java-common
 
